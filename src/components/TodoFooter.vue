@@ -10,7 +10,7 @@
 export default {
   methods: {
     clearTodo: function() {
-      localStorage.clear(); // 로컬 스토리지 모두 지우기
+      this.$emit("clearAll");
     },
   },
 };
