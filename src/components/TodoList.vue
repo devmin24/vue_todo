@@ -27,9 +27,9 @@ export default {
   props: ["propsdata"],
   methods: {
     removeTodo: function(todoItem, index) {
-      localStorage.removeItem(todoItem); // 로컬스토리지에서 지우고,
-      this.todoItems.splice(index, 1); // index값으로 배열에서도 지워주기
+      this.$emit("removeItem", todoItem, index);
     },
+
     toggleComplete: function(todoItem) {
       todoItem.completed = !todoItem.completed; // true이면 false로, false이면 true로 변경
       // localStorage에 값이 변경될 때마다 기존 값 지우고, 새로운 값 넣어주기(localStorage에 update api가 없으므로 갱신하는 방법)
