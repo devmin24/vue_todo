@@ -19,8 +19,8 @@ export default {
   methods: {
     addTodo: function() {
       if (this.newTodoItem !== "") {
-        var obj = { completed: false, item: this.newTodoItem };
-        localStorage.setItem(this.newTodoItem, JSON.stringify(obj)); // 객체를 가져올 때, JSON.stringify를 사용해 문자열로 가져와야함.
+        // this.$emit('이벤트 이름', 인자1, 인자2, ...)
+        this.$emit("addTodoItem", this.newTodoItem);
         this.clearInput(); // this로 같은 인스턴스 안에 있는 메소드도 가져올 수 있음.
       }
     },
