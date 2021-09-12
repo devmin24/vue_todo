@@ -30,11 +30,8 @@ export default {
       this.$emit("removeItem", todoItem, index);
     },
 
-    toggleComplete: function(todoItem) {
-      todoItem.completed = !todoItem.completed; // true이면 false로, false이면 true로 변경
-      // localStorage에 값이 변경될 때마다 기존 값 지우고, 새로운 값 넣어주기(localStorage에 update api가 없으므로 갱신하는 방법)
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    toggleComplete: function(todoItem, index) {
+      this.$emit("toggleItem", todoItem, index);
     },
   },
 };
