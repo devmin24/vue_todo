@@ -6,14 +6,27 @@
       <!-- awesome icon 가져와서 쓰기, css도 직접 적용할 수 있음 -->
       <i class="fas fa-plus addBtn"></i>
     </span>
+
+    <Modal v-if="showModal" @close="showModal = false">
+      <h3 slot="header">
+        경고
+        <i class="closeModalBtn fas fa-times" @click="showModal = false"></i>
+      </h3>
+      <div slot="body">
+        할 일을 입력해주세요.
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script>
+import Modal from "./common/Modal.vue";
+
 export default {
   data: function() {
     return {
       newTodoItem: "",
+      showModal: false,
     };
   },
   methods: {
@@ -22,11 +35,16 @@ export default {
         // this.$emit('이벤트 이름', 인자1, 인자2, ...)
         this.$emit("addTodoItem", this.newTodoItem);
         this.clearInput(); // this로 같은 인스턴스 안에 있는 메소드도 가져올 수 있음.
+      } else {
+        this.showModal = !this.showModal;
       }
     },
     clearInput: function() {
       this.newTodoItem = "";
     },
+  },
+  components: {
+    Modal: Modal,
   },
 };
 </script>
@@ -56,5 +74,8 @@ input:focus {
 .addBtn {
   color: white;
   vertical-align: middle;
+}
+.closeModalBtn {
+  color: #42b983;
 }
 </style>
