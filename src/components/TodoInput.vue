@@ -33,7 +33,8 @@ export default {
     addTodo() {
       if (this.newTodoItem !== "") {
         // this.$emit('이벤트 이름', 인자1, 인자2, ...)
-        this.$emit("addTodoItem", this.newTodoItem);
+        // this.$emit("addTodoItem", this.newTodoItem);
+        this.$store.commit("addOneItem", this.newTodoItem);
         this.clearInput(); // this로 같은 인스턴스 안에 있는 메소드도 가져올 수 있음.
       } else {
         this.showModal = !this.showModal;
